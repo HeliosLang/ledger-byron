@@ -1,4 +1,4 @@
-export {};
+export {}
 
 /**
  * Blake 224 hash (of what?)

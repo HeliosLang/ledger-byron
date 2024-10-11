@@ -1,95 +1,95 @@
 lockfileVersion: "9.0"
 
 settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
+    autoInstallPeers: true
+    excludeLinksFromLockfile: false
 
 importers:
-  .:
-    dependencies:
-      "@helios-lang/cbor":
-        specifier: ^0.1.21
-        version: 0.1.21
-      "@helios-lang/codec-utils":
-        specifier: ^0.1.32
-        version: 0.1.34
-      "@helios-lang/type-utils":
-        specifier: ^0.1.21
-        version: 0.1.21
-    devDependencies:
-      "@types/node":
-        specifier: ^22.5.0
-        version: 22.5.4
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
+    .:
+        dependencies:
+            "@helios-lang/cbor":
+                specifier: ^0.2.1
+                version: 0.2.1
+            "@helios-lang/codec-utils":
+                specifier: ^0.2.1
+                version: 0.2.1
+            "@helios-lang/type-utils":
+                specifier: ^0.1.25
+                version: 0.1.25
+        devDependencies:
+            "@types/node":
+                specifier: ^22.5.0
+                version: 22.5.4
+            prettier:
+                specifier: ^3.3.3
+                version: 3.3.3
+            typescript:
+                specifier: ^5.5.4
+                version: 5.5.4
 
 packages:
-  "@helios-lang/cbor@0.1.21":
-    resolution:
-      {
-        integrity: sha512-EHIKmN1fDPtEwjvPHCjCHf3JtCK2j09z6dwTiSI4HJ7sl62nr5Ti1B0/EkiKrahfKQnYl/wgtVyKoY/qgIJQMw==,
-      }
+    "@helios-lang/cbor@0.2.1":
+        resolution:
+            {
+                integrity: sha512-hWl3qLo2/XIQcM6SFk+3MGL2WBrv9QCxAlkfs/SawV+i9SzcFxqkMtm8okiaFEoU+A+WSX/62deV2IpcSmM/Yw==
+            }
 
-  "@helios-lang/codec-utils@0.1.34":
-    resolution:
-      {
-        integrity: sha512-SDZNVFDRzBN3Z7TyVmYzSa74YAtP2O5sB8hOySkFX0SwjUIDMW3XRjM0pj8EGrMHFrMbWd1MTG+31ysJ30lNkw==,
-      }
+    "@helios-lang/codec-utils@0.2.1":
+        resolution:
+            {
+                integrity: sha512-KM+OsiLp2j7po5y2pFv/ybncOlqek0M6IiWpxDVZdN2gc7d6DwPWQaLjZEbelMHWxObO2M7c16CgsZXutdxtXg==
+            }
 
-  "@helios-lang/type-utils@0.1.21":
-    resolution:
-      {
-        integrity: sha512-z12O84kEwVzqYmcYL+SWCaZNIkmF4cDvKFOtL3KiR6pwl8KngqiQk8MnBEyG06FUMKxCSknWayPGIYzM2HcqBw==,
-      }
+    "@helios-lang/type-utils@0.1.25":
+        resolution:
+            {
+                integrity: sha512-tOqyBWtaI6n/xhfaZr8cnL+Syv0X5whbxpzPLayfDwllI9el54fQ4P4e8CUUm2ls8WNSAgC9razCd2Q3qnMwlA==
+            }
 
-  "@types/node@22.5.4":
-    resolution:
-      {
-        integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==,
-      }
+    "@types/node@22.5.4":
+        resolution:
+            {
+                integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==
+            }
 
-  prettier@3.3.3:
-    resolution:
-      {
-        integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==,
-      }
-    engines: { node: ">=14" }
-    hasBin: true
+    prettier@3.3.3:
+        resolution:
+            {
+                integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
+            }
+        engines: { node: ">=14" }
+        hasBin: true
 
-  typescript@5.5.4:
-    resolution:
-      {
-        integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==,
-      }
-    engines: { node: ">=14.17" }
-    hasBin: true
+    typescript@5.5.4:
+        resolution:
+            {
+                integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
+            }
+        engines: { node: ">=14.17" }
+        hasBin: true
 
-  undici-types@6.19.8:
-    resolution:
-      {
-        integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==,
-      }
+    undici-types@6.19.8:
+        resolution:
+            {
+                integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==
+            }
 
 snapshots:
-  "@helios-lang/cbor@0.1.21":
-    dependencies:
-      "@helios-lang/codec-utils": 0.1.34
-      "@helios-lang/type-utils": 0.1.21
+    "@helios-lang/cbor@0.2.1":
+        dependencies:
+            "@helios-lang/codec-utils": 0.2.1
+            "@helios-lang/type-utils": 0.1.25
 
-  "@helios-lang/codec-utils@0.1.34": {}
+    "@helios-lang/codec-utils@0.2.1": {}
 
-  "@helios-lang/type-utils@0.1.21": {}
+    "@helios-lang/type-utils@0.1.25": {}
 
-  "@types/node@22.5.4":
-    dependencies:
-      undici-types: 6.19.8
+    "@types/node@22.5.4":
+        dependencies:
+            undici-types: 6.19.8
 
-  prettier@3.3.3: {}
+    prettier@3.3.3: {}
 
-  typescript@5.5.4: {}
+    typescript@5.5.4: {}
 
-  undici-types@6.19.8: {}
+    undici-types@6.19.8: {}
