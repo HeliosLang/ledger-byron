@@ -1,12 +1,12 @@
 import { decodeTagged, encodeInt, encodeTuple } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { SscCertificates } from "./SscCertificates.js"
 import { SscCommitments } from "./SscCommitments.js"
 import { SscOpenings } from "./SscOpenings.js"
 import { SscShares } from "./SscShares.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 /**
@@ -109,7 +109,7 @@ export class Ssc {
      * @returns {Ssc}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [tag, decodeItem] = decodeTagged(stream)
 

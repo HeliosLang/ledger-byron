@@ -6,10 +6,10 @@ import {
     encodeMap,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 export class VssEncrypted {
@@ -29,7 +29,7 @@ export class VssEncrypted {
      * @param {BytesLike} bytes
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const m = decodeMap(stream, decodeBytes, (stream) =>
             decodeTuple(stream, [decodeBytes])

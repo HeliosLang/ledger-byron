@@ -4,11 +4,11 @@ import {
     encodeBytes,
     encodeMap
 } from "@helios-lang/cbor"
-import { ByteStream, compareBytes } from "@helios-lang/codec-utils"
+import { compareBytes, makeByteStream } from "@helios-lang/codec-utils"
 import { SscShare } from "./SscShare.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 export class SscShares {
@@ -24,7 +24,7 @@ export class SscShares {
      * @returns {SscShares}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const m = decodeMap(stream, decodeBytes, SscShare)
 

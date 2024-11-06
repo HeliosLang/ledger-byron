@@ -8,12 +8,11 @@ import {
     encodeList,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream, toInt } from "@helios-lang/codec-utils"
+import { makeByteStream, toInt } from "@helios-lang/codec-utils"
 import { EpochBoundaryConsensus } from "./EpochBoundaryConsensus.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("@helios-lang/codec-utils").IntLike} IntLike
+ * @import { BytesLike, IntLike } from "@helios-lang/codec-utils"
  */
 
 /**
@@ -65,7 +64,7 @@ export class EpochBoundaryHeader {
      * @returns {EpochBoundaryHeader}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [protocolMagic, prevBlock, bodyProof, consensusData, _extraData] =
             decodeTuple(stream, [

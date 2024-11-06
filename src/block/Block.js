@@ -9,14 +9,14 @@ import {
     encodeList,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { BlockBody } from "./BlockBody.js"
 import { BlockHeader } from "./BlockHeader.js"
 import { EpochBoundaryHeader } from "./EpochBoundaryHeader.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("./StakeHolderId.js").StakeHolderId} StakeHolderId
+ * @import { BytesLike } from "@helios-lang/codec-utils"
+ * @import { StakeHolderId } from "./StakeHolderId.js"
  */
 
 /**
@@ -89,7 +89,7 @@ export class Block {
      * @returns {Block}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [tag, decodeItem] = decodeTagged(stream)
 

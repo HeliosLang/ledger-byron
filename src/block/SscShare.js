@@ -6,10 +6,10 @@ import {
     encodeList,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 export class SscShare {
@@ -27,7 +27,7 @@ export class SscShare {
      * @returns {SscShare}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [addressId, decrypted] = decodeTuple(stream, [
             decodeBytes,

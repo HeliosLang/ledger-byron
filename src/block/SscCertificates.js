@@ -1,6 +1,10 @@
 import { decodeList, decodeTag, encodeList, encodeTag } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { SscCertificate } from "./SscCertificate.js"
+
+/**
+ * @import { BytesLike } from "@helios-lang/codec-utils"
+ */
 
 export class SscCertificates {
     /**
@@ -16,8 +20,12 @@ export class SscCertificates {
         this.certificates = certificates
     }
 
+    /**
+     * @param {BytesLike} bytes
+     * @returns {SscCertificates}
+     */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const tag = decodeTag(stream)
 

@@ -5,17 +5,17 @@ import {
     encodeList,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { UpdateProposal } from "./UpdateProposal.js"
 import { UpdateVote } from "./UpdateVote.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 export class UpdateData {
     /**
-     * @param {Option<UpdateProposal>} proposal
+     * @param {UpdateProposal | undefined} proposal
      * @param {UpdateVote[]} votes
      */
     constructor(proposal, votes) {
@@ -28,7 +28,7 @@ export class UpdateData {
      * @returns {UpdateData}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [proposal, votes] = decodeTuple(stream, [
             (stream) => decodeListOption(stream, UpdateProposal),

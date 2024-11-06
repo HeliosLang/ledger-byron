@@ -6,11 +6,10 @@ import {
     encodeInt,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream, toInt } from "@helios-lang/codec-utils"
+import { makeByteStream, toInt } from "@helios-lang/codec-utils"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("@helios-lang/codec-utils").IntLike} IntLike
+ * @import { BytesLike, IntLike } from "@helios-lang/codec-utils"
  */
 
 /**
@@ -35,7 +34,7 @@ export class TxProof {
      * @returns {TxProof} The decoded TxProof object.
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [index, merkleRoot, witnessHash] = decodeTuple(stream, [
             decodeInt,

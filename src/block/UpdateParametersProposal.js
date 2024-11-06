@@ -6,30 +6,29 @@ import {
     encodeInt,
     decodeListOption
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
-import { None } from "@helios-lang/type-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { TxFeePolicy } from "./TxFeePolicy.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 /**
  * @typedef {{
- *   scriptVersion: Option<number>
- *   slotDuration: Option<bigint>
- *   maxBlockSize: Option<bigint>
- *   maxHeaderSize: Option<bigint>
- *   maxTxSize: Option<bigint>
- *   maxProposalSize: Option<bigint>
- *   mpcThd: Option<bigint>
- *   heavyDelThd: Option<bigint>
- *   updateVoteThd: Option<bigint>
- *   updateProposalThd: Option<bigint>
- *   updateImplicit: Option<bigint>
- *   softForkRule: Option<[bigint, bigint, bigint]>
- *   txFeePolicy: Option<TxFeePolicy>
- *   unlockStakeEpoch: Option<number>
+ *   scriptVersion?: number
+ *   slotDuration?: bigint
+ *   maxBlockSize?: bigint
+ *   maxHeaderSize?: bigint
+ *   maxTxSize?: bigint
+ *   maxProposalSize?: bigint
+ *   mpcThd?: bigint
+ *   heavyDelThd?: bigint
+ *   updateVoteThd?: bigint
+ *   updateProposalThd?: bigint
+ *   updateImplicit?: bigint
+ *   softForkRule?: [bigint, bigint, bigint]
+ *   txFeePolicy?: TxFeePolicy
+ *   unlockStakeEpoch?: number
  * }} UpdateParametersProposalProps
  */
 
@@ -75,7 +74,7 @@ export class UpdateParametersProposal {
      * @returns {UpdateParametersProposal}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [
             scriptVersion,
@@ -136,35 +135,39 @@ export class UpdateParametersProposal {
     toCbor() {
         return encodeTuple([
             encodeListOption(
-                this.scriptVersion ? encodeInt(this.scriptVersion) : None
+                this.scriptVersion ? encodeInt(this.scriptVersion) : undefined
             ),
             encodeListOption(
-                this.slotDuration ? encodeInt(this.slotDuration) : None
+                this.slotDuration ? encodeInt(this.slotDuration) : undefined
             ),
             encodeListOption(
-                this.maxBlockSize ? encodeInt(this.maxBlockSize) : None
+                this.maxBlockSize ? encodeInt(this.maxBlockSize) : undefined
             ),
             encodeListOption(
-                this.maxHeaderSize ? encodeInt(this.maxHeaderSize) : None
-            ),
-            encodeListOption(this.maxTxSize ? encodeInt(this.maxTxSize) : None),
-            encodeListOption(
-                this.maxProposalSize ? encodeInt(this.maxProposalSize) : None
-            ),
-            encodeListOption(this.mpcThd ? encodeInt(this.mpcThd) : None),
-            encodeListOption(
-                this.heavyDelThd ? encodeInt(this.heavyDelThd) : None
+                this.maxHeaderSize ? encodeInt(this.maxHeaderSize) : undefined
             ),
             encodeListOption(
-                this.updateVoteThd ? encodeInt(this.updateVoteThd) : None
+                this.maxTxSize ? encodeInt(this.maxTxSize) : undefined
+            ),
+            encodeListOption(
+                this.maxProposalSize
+                    ? encodeInt(this.maxProposalSize)
+                    : undefined
+            ),
+            encodeListOption(this.mpcThd ? encodeInt(this.mpcThd) : undefined),
+            encodeListOption(
+                this.heavyDelThd ? encodeInt(this.heavyDelThd) : undefined
+            ),
+            encodeListOption(
+                this.updateVoteThd ? encodeInt(this.updateVoteThd) : undefined
             ),
             encodeListOption(
                 this.updateProposalThd
                     ? encodeInt(this.updateProposalThd)
-                    : None
+                    : undefined
             ),
             encodeListOption(
-                this.updateImplicit ? encodeInt(this.updateImplicit) : None
+                this.updateImplicit ? encodeInt(this.updateImplicit) : undefined
             ),
             encodeListOption(
                 this.softForkRule
@@ -173,13 +176,15 @@ export class UpdateParametersProposal {
                           encodeInt(this.softForkRule[1]),
                           encodeInt(this.softForkRule[2])
                       ])
-                    : None
+                    : undefined
             ),
             encodeListOption(
-                this.txFeePolicy ? this.txFeePolicy.toCbor() : None
+                this.txFeePolicy ? this.txFeePolicy.toCbor() : undefined
             ),
             encodeListOption(
-                this.unlockStakeEpoch ? encodeInt(this.unlockStakeEpoch) : None
+                this.unlockStakeEpoch
+                    ? encodeInt(this.unlockStakeEpoch)
+                    : undefined
             )
         ])
     }

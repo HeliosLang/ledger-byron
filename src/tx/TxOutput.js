@@ -4,17 +4,17 @@ import {
     encodeInt,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
-import { Address } from "./Address.js"
+import { makeByteStream } from "@helios-lang/codec-utils"
+import { decodeByronAddress } from "./ByronAddress.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("@helios-lang/codec-utils").IntLike} IntLike
+ * @import { BytesLike, IntLike } from "@helios-lang/codec-utils"
+ * @import { ByronAddress } from "src/index.js"
  */
 
 export class TxOutput {
     /**
-     * @param {Address} address
+     * @param {ByronAddress} address
      * @param {IntLike} lovelace
      */
     constructor(address, lovelace) {
@@ -27,8 +27,11 @@ export class TxOutput {
      * @returns {TxOutput}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
-        const [address, lovelace] = decodeTuple(stream, [Address, decodeInt])
+        const stream = makeByteStream({ bytes })
+        const [address, lovelace] = decodeTuple(stream, [
+            decodeByronAddress,
+            decodeInt
+        ])
 
         return new TxOutput(address, lovelace)
     }

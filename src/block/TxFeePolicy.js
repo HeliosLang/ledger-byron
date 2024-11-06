@@ -9,11 +9,10 @@ import {
     encodeTag,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("@helios-lang/codec-utils").IntLike} IntLike
+ * @import { BytesLike, IntLike } from "@helios-lang/codec-utils"
  */
 
 /**
@@ -76,7 +75,7 @@ export class TxFeePolicy {
      * @param {BytesLike} bytes
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [tag, decodeItem] = decodeTagged(stream)
 

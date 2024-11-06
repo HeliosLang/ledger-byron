@@ -6,11 +6,10 @@ import {
     encodeInt,
     encodeTuple
 } from "@helios-lang/cbor"
-import { ByteStream, toInt } from "@helios-lang/codec-utils"
+import { makeByteStream, toInt } from "@helios-lang/codec-utils"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
- * @typedef {import("@helios-lang/codec-utils").IntLike} IntLike
+ * @import { BytesLike, IntLike } from "@helios-lang/codec-utils"
  */
 
 export class EpochDelegation {
@@ -32,7 +31,7 @@ export class EpochDelegation {
      * @returns {EpochDelegation}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         const [epoch, issuer, delegate, certificate] = decodeTuple(stream, [
             decodeInt,

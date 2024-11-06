@@ -1,9 +1,9 @@
 import { decodeList, encodeList } from "@helios-lang/cbor"
-import { ByteStream } from "@helios-lang/codec-utils"
+import { makeByteStream } from "@helios-lang/codec-utils"
 import { TxWitness } from "./TxWitness.js"
 
 /**
- * @typedef {import("@helios-lang/codec-utils").BytesLike} BytesLike
+ * @import { BytesLike } from "@helios-lang/codec-utils"
  */
 
 export class TxWitnesses {
@@ -19,7 +19,7 @@ export class TxWitnesses {
      * @returns {TxWitnesses}
      */
     static fromCbor(bytes) {
-        const stream = ByteStream.from(bytes)
+        const stream = makeByteStream({ bytes })
 
         return new TxWitnesses(decodeList(stream, TxWitness))
     }
